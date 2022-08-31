@@ -13,13 +13,14 @@ import {
     NavBtn,
     NavBtnLink,
     } from './NavbarElements';
-    import { useSelector } from 'react-redux';
+import AuthContext from '../../context/AuthContext';
 
 
 
 const Navbar = ({ toggle }) => {
+    let { user, logoutUser } = useContext(AuthContext);
+
     const [scrollNav, setScrollNav] = useState(false);
-    const user = useSelector((state) => state.user.userInfo);
 
     const changeNav = () => {
         if(window.scrollY >= 80) {
@@ -69,12 +70,15 @@ const Navbar = ({ toggle }) => {
                             offset={-80}>Wall</NavLinks>
                         </NavItem>
                     </NavMenu>
-                    {/* {user && <NavLinks>Hello, {user.username}</NavLinks>} */}
+                    {user && <NavLinks>Hello, {user.username}</NavLinks>}
                     <NavBtn>
-                        <NavBtnLink to="/signin">Sign In</NavBtnLink> 
-                        {/* if user is signed in then button changes to sign out */}
+                        {user ? (
+                            <NavBtnLink to="/" onClick={logoutUser}>Log Out</NavBtnLink> 
+                        ) : (
+                            <NavBtnLink to="/signin">Sign In</NavBtnLink> 
+                        )}
                     </NavBtn>
-                    {/* <Logout onClick={logoutMethod()}><Logout/> */}
+                    
                 </NavbarContainer>
             </Nav>
         </>

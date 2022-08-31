@@ -29,6 +29,7 @@ def getRoutes(request):
         '/api/token',
         '/api/token/refresh',
         '/api/users/register',
+        'api/posts/get',
     ]
 
     return Response(routes)
@@ -66,6 +67,6 @@ def createPost(request):
 
 @api_view(['GET'])
 def getPosts(request):
-    posts = Post.objects.all().order_by('-created')
+    posts = Post.objects.all()
     serializer = PostSerializer(posts, many=True)
     return Response(serializer.data)

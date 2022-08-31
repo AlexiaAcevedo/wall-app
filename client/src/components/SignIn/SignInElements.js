@@ -20,7 +20,7 @@ export const FormWrap = styled.div`
     box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
     padding: 0 40px;
     box-sizing: border-box;
 
@@ -33,6 +33,14 @@ export const FormH1 = styled.h1`
     margin: 40px 0;
     color: #000;
     font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+`
+
+export const FormH3 = styled.h3`
+    margin: 40px 0;
+    color: red;
+    font-size: 16px;
     font-weight: 400;
     text-align: center;
 `

@@ -27,6 +27,11 @@ class UserSerializerWithToken(UserSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    def getUsername(self, obj):
+        return obj.user.username
+
+    username = serializers.SerializerMethodField('getUsername')
+
     class Meta:
         model = Post
         fields = '__all__'
