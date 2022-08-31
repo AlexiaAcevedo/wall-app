@@ -70,8 +70,9 @@ const Navbar = ({ toggle }) => {
                             offset={-80}>Wall</NavLinks>
                         </NavItem>
                     </NavMenu>
-                    {user && <NavLinks>Hello, {user.username}</NavLinks>}
+                    
                     <NavBtn>
+                        {user && <NavLinks>Hello, {user.username}</NavLinks>}
                         {user ? (
                             <NavBtnLink to="/" onClick={logoutUser}>Log Out</NavBtnLink> 
                         ) : (

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AuthContext from '../../context/AuthContext'
 import {
     SidebarContainer,
     Icon,
@@ -11,6 +12,7 @@ import {
 } from './SidebarElements'
 
 const Sidebar = ({isOpen, toggle}) => {
+    let { logoutUser, user } = useContext(AuthContext);
     return (
         <SidebarContainer isOpen={isOpen} onClick={toggle}>
             <Icon onClick={toggle}>
@@ -22,7 +24,11 @@ const Sidebar = ({isOpen, toggle}) => {
                     <SidebarLink to="wall" onClick={toggle}>Wall</SidebarLink>
                 </SidebarMenu>
                 <BtnWrap>
-                    <BtnLink to={"/signin"}>Sign In</BtnLink>
+                    {user ? (
+                        <BtnLink to="/" onClick={logoutUser}>Log Out</BtnLink>
+                    ) : (
+                        <BtnLink to={"/signin"}>Sign In</BtnLink>
+                    )}
                 </BtnWrap>
             </SidebarWrapper>
         </SidebarContainer>

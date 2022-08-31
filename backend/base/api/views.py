@@ -30,6 +30,7 @@ def getRoutes(request):
         '/api/token/refresh',
         '/api/users/register',
         'api/posts/get',
+        'api/posts/create',
     ]
 
     return Response(routes)
@@ -55,8 +56,9 @@ def registerUser(request):
 @api_view(['POST'])
 def createPost(request):
     data = request.data
+    print( f"user id: {data['user']}, content: {data['content']}")
     try:
-        post = Post(user=data['user_id'], content=data['content'])
+        post = Post(user_id=data['user'], content=data['content'])
         post.save()
         serializer = PostSerializer(post, many=False)
         return Response(serializer.data)

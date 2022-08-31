@@ -53,12 +53,12 @@ const Register = () => {
                 <FormWrap>
                     <Form>
                         <FormH1>Register Now</FormH1>
-                        {
+                        {/* {
                             successful ? <FormSuccessMessage>Your registration was successfull. Please sign in.</FormSuccessMessage> : null
                         }
                         {
                             hasError ? <FormErrorMessage>There was a problem submitting your registration. Please try again.</FormErrorMessage> : null
-                        }
+                        } */}
                         <FormField>
                             <FormInput type='email' name='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} required></FormInput>
                         </FormField>

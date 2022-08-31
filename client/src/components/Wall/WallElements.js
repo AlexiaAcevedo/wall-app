@@ -36,6 +36,9 @@ export const WallWrapper = styled.div`
     }
 `
 
+export const WallForm = styled.form`
+`
+
 export const WallCard = styled.div`
     background: #fff;
     display: flex;
@@ -83,5 +86,21 @@ export const WallP = styled.p`
 `
 
 export const PostButton = styled.button`
+    border-radius: 50px;
+    background: rgb(96, 187, 234);
+    white-space: nowrap;
+    padding: 14px 48px;
+    color: #010606;
+    font-size: 16px;
+    outline: none;
+    border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+    }
 `
