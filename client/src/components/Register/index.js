@@ -42,7 +42,11 @@ const Register = () => {
         })
         let data = await response.json()
         if (response.status == 200) {
-            navigate("/signin")
+            setSuccessful(true);
+            setTimeout(() => navigate("/signin"), 3000 )
+        } else {
+            setHasError(true);
+            setTimeout(() => navigate(`/register`), 3000);
         }
     }
 
@@ -53,12 +57,12 @@ const Register = () => {
                 <FormWrap>
                     <Form>
                         <FormH1>Register Now</FormH1>
-                        {/* {
-                            successful ? <FormSuccessMessage>Your registration was successfull. Please sign in.</FormSuccessMessage> : null
+                        {
+                            successful ? <FormSuccessMessage>Your registration was successful. Please sign in.</FormSuccessMessage> : null
                         }
                         {
                             hasError ? <FormErrorMessage>There was a problem submitting your registration. Please try again.</FormErrorMessage> : null
-                        } */}
+                        }
                         <FormField>
                             <FormInput type='email' name='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} required></FormInput>
                         </FormField>
