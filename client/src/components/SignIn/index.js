@@ -12,17 +12,32 @@ import {
     FormButton,
     FormP,
     FormLink,
-    FormH3
 } from './SignInElements';
 import Navbar from '../Navbar';
 import AuthContext from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+
 
 const SignIn = () => {
 
-    let {loginUser, successful, hasError, user} = useContext(AuthContext);
-    
+    let navigate = useNavigate();
+
+    let {loginUser, signInError, signInSuccess} = useContext(AuthContext);
+
+    let success = () => {
+        setTimeout(() => navigate('/'), 3000);
+        return (
+            <FormSuccessMessage>You have been logged in!</FormSuccessMessage>
+        )
+    }
+
+    let error = () => {
+        setTimeout(() => navigate('/signin'), 3000);
+        return (
+            <FormErrorMessage>There was a problem logging in. Please try again.</FormErrorMessage>
+        )
+    } 
+
     return (
         <>
             <Navbar />
@@ -30,14 +45,12 @@ const SignIn = () => {
                 <FormWrap>
                     <Form onSubmit={loginUser}>
                         <FormH1>Sign In Now</FormH1>
-                        {user && <FormH3>Already logged in</FormH3> }
-                        
-                        {/* {
-                            successful ? <FormSuccessMessage>Your registration was successfull!</FormSuccessMessage> : null
+                        {
+                            signInSuccess ? success() : null
                         }
                         {
-                            hasError ? <FormErrorMessage>There was a problem submitting your registration. Please try again.</FormErrorMessage> : null
-                        } */}
+                            signInError ? error() : null
+                        }
                         <FormField>
                             <FormInput type='text' name='username' placeholder='Username' required></FormInput>
                         </FormField>

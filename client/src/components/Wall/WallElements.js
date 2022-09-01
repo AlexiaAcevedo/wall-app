@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FaUserCircle} from 'react-icons/fa';
 
 export const WallContainer = styled.div`
     height: 900px;
@@ -25,15 +26,18 @@ export const WallWrapper = styled.div`
     display: grid;
     align-items: center;
     grid-gap: 16px;
+    grid-template-rows: auto;
     padding: 0 50px;
     overflow-y: scroll;
 
     @media screen and (max-width: 1000px) {
-        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        width: fit-content;
     }
 
     @media screen and (max-width: 768px) {
-        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        width: fit-content;
         padding: 0 20px;
     }
 `
@@ -45,20 +49,20 @@ export const FeedWrapper = styled.div`
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: auto;
     align-items: center;
     grid-gap: 16px;
     padding: 0 50px;
     margin-bottom: 20px;
-    
-    
 
     @media screen and (max-width: 1000px) {
-        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        width: fit-content;
     }
 
     @media screen and (max-width: 768px) {
-        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        width: fit-content;
         padding: 0 20px;
     }
 `
@@ -103,6 +107,13 @@ export const FormCard = styled.div`
         transition: all 0.2s ease-in-out;
         cursor: pointer;
     }
+    @media screen and (max-width: 1000px) {
+        width: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: auto;
+    }
 `
 
 export const WallCard = styled.div`
@@ -123,12 +134,27 @@ export const WallCard = styled.div`
         transition: all 0.2s ease-in-out;
         cursor: pointer;
     }
+    @media screen and (max-width: 1000px) {
+        width: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: auto;
+    }
 `
 
 export const PostInput = styled.textarea`
     height: 100px;
     width: 650px;
     margin-bottom: 10px;
+
+    @media screen and (max-width: 1000px) {
+        width: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: auto;
+    }
 `
 
 export const WallH1 = styled.h1`
@@ -152,6 +178,7 @@ export const WallP = styled.p`
 
 export const WallMessage = styled.p`
     font-size: 1rem;
+    font-weight: 600;
     text-align: center;
     margin: 40px;
 `
@@ -182,6 +209,6 @@ export const Div = styled.div`
     justify-content: flex-start;
 `
 
-export const UserIcon = styled.a`
+export const UserIcon = styled(FaUserCircle)`
     font-size: 24px;
 `

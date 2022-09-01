@@ -30,23 +30,22 @@ const Register = () => {
 
     const registerUser = async () => {
         console.log('About to register user')
-        let response = await fetch('http://localhost:8000/api/users/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'email': email, 
-                'username': username, 
-                'password':password})
-        })
-        let data = await response.json()
-        if (response.status == 200) {
-            setSuccessful(true);
-            setTimeout(() => navigate("/signin"), 3000 )
-        } else {
-            setHasError(true);
-            setTimeout(() => navigate(`/register`), 3000);
+        let data = {
+            'email': email, 
+            'username': username, 
+            'password':password
+        }
+        try {
+            let response = await axios.post('http://localhost:8000/api/users/register', data)
+            if (response.status == 200) {
+                setSuccessful(true);
+                setTimeout(() => navigate("/signin"), 3000 )
+            } else {
+                setHasError(true);
+                setTimeout(() => navigate(`/register`), 3000);
+            }
+        } catch (e) {
+            console.error(`Error while trying to register user. ${e}`)
         }
     }
 

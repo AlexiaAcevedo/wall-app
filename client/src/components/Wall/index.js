@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FaUserCircle} from 'react-icons/fa';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
 import {
@@ -20,10 +19,10 @@ import {
     WallMessage
 } from './WallElements';
 
-const Wall = (primary) => {
+const Wall = () => {
     let [posts, setPosts] = useState([]);
     let [post, setPost] = useState("");
-    let { authTokens, logoutUser, user } = useContext(AuthContext);
+    let {logoutUser, user} = useContext(AuthContext);
 
     useEffect(()=> {
         getPosts()
@@ -47,20 +46,20 @@ const Wall = (primary) => {
     let createPost = async (e) => {
         e.preventDefault()
         console.log('Sending post data to backend')
-        let response = await fetch('http://localhost:8000/api/posts/create', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'user': user.user_id,
-                'content': post, 
-                })
-        })
-        if (response.status === 200 ) {
-            getPosts()
-        } else {
-            logoutUser()
+        let data = {
+            'user': user.user_id,
+            'content': post, 
+        }
+        try {
+            let response = await axios.post('http://localhost:8000/api/posts/create', data)
+            if (response.status === 200 ) {
+                getPosts();
+                e.target.reset()
+            } else {
+                logoutUser();
+            }
+        } catch (e) {
+            console.error(`Error while trying to create post. Error: ${e}`)
         }
     }
 
@@ -101,7 +100,7 @@ const Wall = (primary) => {
                             <WallCard>
                                 <CardUserInfo>
                                     <Div>
-                                        <UserIcon><FaUserCircle /></UserIcon>
+                                        <UserIcon></UserIcon>
                                         <WallUsername>@{post.username}</WallUsername>
                                     </Div>
                                     <Div>
