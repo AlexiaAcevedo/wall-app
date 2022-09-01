@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { FaUserCircle} from 'react-icons/fa';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
 import {
@@ -8,7 +9,14 @@ import {
     PostInput,
     WallP,
     WallForm,
-    PostButton
+    PostButton,
+    FeedWrapper,
+    CardUserInfo,
+    WallUsername,
+    CardContent,
+    FormCard,
+    Div,
+    UserIcon
 } from './WallElements';
 
 const Wall = (primary) => {
@@ -48,7 +56,29 @@ const Wall = (primary) => {
                 'content': post, 
                 })
         })
-        let data = await response.json()
+        if (response.status === 200 ) {
+            getPosts()
+        } else {
+            logoutUser()
+        }
+    }
+
+    let getPostTime = (post) => {
+        let diff = Date.now() - new Date(post.created);
+        let days = Math.round(diff/86400000);
+        let hours  = Math.round(diff/3600000);
+        let minutes  = Math.round(diff/60000);
+        let statement = "just now";
+        if (hours > 48) {
+            statement = `${days} days ago`;
+        } else if (hours > 24) {
+            statement = `${days} day ago`;
+        } else if (minutes > 60) {
+            statement = `${hours} hours ago`;
+        } else if (minutes > 1) {
+            statement = `${minutes} minutes ago`;
+        }
+        return `posted ${statement}`;
     }
 
     return (
@@ -57,26 +87,32 @@ const Wall = (primary) => {
                 <WallWrapper>
                     {user ? (
                         <WallForm onSubmit={createPost}>
-                        <WallCard>
+                        <FormCard>
                             <PostInput name='post' placeholder="what's on your mind?" maxLength={150} onChange={(e) => setPost(e.target.value)} required></PostInput>
                             <PostButton  type='submit'>Submit</PostButton>
-                        </WallCard>
+                        </FormCard>
                         </WallForm>
                     ) : (
-                        <WallCard>
-                            <WallP>Sign in to post on the wall</WallP>
-                        </WallCard>
+                        <WallP>Sign in to post on the wall</WallP>
                     )}
-
-
-
-                    
-                    
-                    <WallCard>
-                        {posts.map(post => (
-                            <WallP>{post.username}:{post.content}</WallP>
+                    <FeedWrapper>
+                    {posts.map(post => (
+                            <WallCard>
+                                <CardUserInfo>
+                                    <Div>
+                                        <UserIcon><FaUserCircle /></UserIcon>
+                                        <WallUsername>@{post.username}</WallUsername>
+                                    </Div>
+                                    <Div>
+                                        <WallP>{getPostTime(post)}</WallP>
+                                    </Div>
+                                </CardUserInfo>
+                                <CardContent>
+                                    <WallP>{post.content}</WallP>
+                                </CardContent>
+                            </WallCard>
                         ))}
-                    </WallCard>
+                    </FeedWrapper>
                 </WallWrapper>
             </WallContainer>
         </>

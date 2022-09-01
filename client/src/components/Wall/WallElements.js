@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const WallContainer = styled.div`
     height: 900px;
+    flex: 0.4;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,13 +19,14 @@ export const WallContainer = styled.div`
 `
 
 export const WallWrapper = styled.div`
+    height: 100%;
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 1fr 2fr;
     align-items: center;
     grid-gap: 16px;
     padding: 0 50px;
+    overflow-y: scroll;
 
     @media screen and (max-width: 1000px) {
         grid-template-columns: 1fr;
@@ -39,7 +41,51 @@ export const WallWrapper = styled.div`
 export const WallForm = styled.form`
 `
 
-export const WallCard = styled.div`
+export const FeedWrapper = styled.div`
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    grid-gap: 16px;
+    padding: 0 50px;
+    margin-bottom: 20px;
+    
+    
+
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: 1fr;
+    }
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+`
+
+export const CardUserInfo = styled.div`
+    border-bottom: 2px solid #adadad;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+
+export const WallUsername = styled.p`
+    font-size: 1rem;
+    color: black;
+    margin-left: 10px;
+    padding-bottom: 5px;
+`
+
+export const CardContent = styled.div`
+    margin: 10px;
+    padding-top: 10px;
+`
+
+
+export const FormCard = styled.div`
+    margin-top: 40px;
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -47,6 +93,26 @@ export const WallCard = styled.div`
     align-items: center;
     border-radius: 10px;
     max-height: 380px;
+    height: 100%;
+    padding: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.02);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+    }
+`
+
+export const WallCard = styled.div`
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 10px;
+    max-height: 380px;
+    width: 700px;
     height: 100%;
     padding: 30px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -82,7 +148,6 @@ export const WallH2 = styled.h2`
 
 export const WallP = styled.p`
     font-size: 1rem;
-    text-align: center;
 `
 
 export const PostButton = styled.button`
@@ -103,4 +168,14 @@ export const PostButton = styled.button`
     &:hover {
         transition: all 0.2s ease-in-out;
     }
+`
+
+export const Div = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+`
+
+export const UserIcon = styled.a`
+    font-size: 24px;
 `

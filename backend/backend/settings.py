@@ -28,6 +28,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Email Info
+DEFAULT_FROM_EMAIL = 'thewall33323@gmail.com'
+SERVER_EMAIL = 'thewall33323@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'thewall33323@gmail.com'
+EMAIL_HOST_PASSWORD = 'uoqirccypghuanug'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
 
 # Application definition
 

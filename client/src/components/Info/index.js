@@ -33,7 +33,7 @@ const Info = ({
                             <TextWrapper>
                                 <TopLine>Join The Wall</TopLine>
                                 <Heading darkText={darkText}>Creating an account is super easy</Heading>
-                                <Subtitle darkText={darkText}>The wall is a social application that allows a user to post their thoughts, views, and criticisms for everyone to see. Get everything set up and ready in under a minute. All we need is to know a little more about you and you're ready to go!</Subtitle>
+                                <Subtitle darkText={darkText}>The wall is a social application that allows a user to post their thoughts, views, and criticisms for everyone to see. You must have an account to post on the platform. It takes less than a minute to sign up. Join the conversation!</Subtitle>
                                 <BtnWrap>
                                     <BtnLink to={'/register'}
                                     primary={primary ? 1 : 0}>Register Now
