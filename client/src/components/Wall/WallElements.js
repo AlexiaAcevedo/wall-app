@@ -150,6 +150,12 @@ export const WallP = styled.p`
     font-size: 1rem;
 `
 
+export const WallMessage = styled.p`
+    font-size: 1rem;
+    text-align: center;
+    margin: 40px;
+`
+
 export const PostButton = styled.button`
     border-radius: 50px;
     background: rgb(96, 187, 234);

@@ -16,7 +16,8 @@ import {
     CardContent,
     FormCard,
     Div,
-    UserIcon
+    UserIcon,
+    WallMessage
 } from './WallElements';
 
 const Wall = (primary) => {
@@ -69,7 +70,7 @@ const Wall = (primary) => {
         let hours  = Math.round(diff/3600000);
         let minutes  = Math.round(diff/60000);
         let statement = "just now";
-        if (hours > 48) {
+        if (hours >= 48) {
             statement = `${days} days ago`;
         } else if (hours > 24) {
             statement = `${days} day ago`;
@@ -93,7 +94,7 @@ const Wall = (primary) => {
                         </FormCard>
                         </WallForm>
                     ) : (
-                        <WallP>Sign in to post on the wall</WallP>
+                        <WallMessage>Must be logged in to post on the wall</WallMessage>
                     )}
                     <FeedWrapper>
                     {posts.map(post => (
