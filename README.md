@@ -39,9 +39,19 @@ The wall is an application that allows users to register, login, and write on a 
 ![pic2](https://user-images.githubusercontent.com/98661499/188015729-8e253fcf-7ce9-4954-b9c2-7bcee1cc1067.PNG)
 
 
+
 ![pic3](https://user-images.githubusercontent.com/98661499/188015779-8aa10606-2ea4-4531-b97d-2f4511f4f90d.PNG)
 
 
+
+![pic6](https://user-images.githubusercontent.com/98661499/188202054-7dc1ccb0-e170-492b-9515-a85a5ad30beb.PNG)
+
+
+
 ![pic4](https://user-images.githubusercontent.com/98661499/188015813-ba74dc21-75dd-4af8-bf27-f41252650156.PNG)
+
+
+
+![pic7](https://user-images.githubusercontent.com/98661499/188202017-00a99b9f-c25c-4d7a-94ed-2e38fe9d3845.PNG)
 
 
