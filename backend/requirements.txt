@@ -1,3 +1,8 @@
 Django==3.2
 djangorestframework==3.13.1
 djangorestframework_simplejwt==4.8.0
+django-cors-headers==3.13.0
+sqlparse==0.4.2
+pytz==2022.2.1
+PyJWT==2.4.0
+asgiref==3.5.2
