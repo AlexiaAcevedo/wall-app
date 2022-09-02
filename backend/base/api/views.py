@@ -7,9 +7,8 @@ from base.models import Post
 from base.api.serializers import UserSerializerWithToken
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-from django.core.mail import send_mail
 from django.core.mail import EmailMessage
-from django.conf import settings
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -50,9 +49,8 @@ def registerUser(request):
         )
 
         msg = EmailMessage('Welcome to The Wall App',
-            'Hello - Thank you for joining The Wall. We are looking forward to your first post!', to=['alexiaacevedo712@gmail.com'])
+            'Hello - Thank you for joining The Wall. We are looking forward to your first post!', to=[user.email])
         msg.send()
-
         
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
@@ -77,6 +75,6 @@ def createPost(request):
 
 @api_view(['GET'])
 def getPosts(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created')
     serializer = PostSerializer(posts, many=True)
     return Response(serializer.data)
