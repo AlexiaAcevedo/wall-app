@@ -10,7 +10,9 @@ The wall is an application that allows users to register, login, and write on a 
 
     1. cd wall-app/backend
     2. pip install -r requirements.txt
-    3. python manage.py runserver
+    3. python manage.py migrate
+    4. python manage.py createsuperuser
+    5. python manage.py runserver
 
 ### Setting Up Frontend
     
